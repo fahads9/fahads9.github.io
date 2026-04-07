@@ -281,7 +281,6 @@
     <div class="field-group">
       <div class="group-label av"><div class="vdot"></div>Payload (always visible)</div>
       <div class="field-row"><span class="field-name"><code>iss</code> = issuer URI</span><span class="fbadge req">REQ</span><span class="fdesc">Issuer identifier URI. MUST be a stable, dereferenceable URI.</span></div>
-      <div class="field-row"><span class="field-name"><code>aud</code> = wallet URI</span><span class="fbadge req">REQ</span><span class="fdesc">Audience — Wallet</span></div>
       <div class="field-row"><span class="field-name"><code>sub</code> = user id</span><span class="fbadge req">REQ</span><span class="fdesc">End-user subject identifier.</span></div>
       <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at timestamp.</span></div>
       <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. SHOULD ≤ 1 year. Clock skew: 300s.</span></div>
@@ -369,9 +368,6 @@
           <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument identifier</span></div>
           <div class="field-row sub"><span class="field-name"><code>description</code></span><span class="fbadge opt">OPT</span><span class="fdesc">human-readable label</span></div>
         </div></div>
-        <div class="field-row sub"><span class="field-name"><code>type</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument type (e.g. "card")</span></div>
-        <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument identifier</span></div>
-        <div class="field-row sub"><span class="field-name"><code>description</code></span><span class="fbadge opt">OPT</span><span class="fdesc">human-readable label</span></div>
         <div class="field-row"><span class="field-name"><code>constraints[]</code></span><span class="fbadge req">REQ</span><span class="fdesc">Typed constraint array.</span></div>
         <div class="cgroup" id="c-amount"><div class="cheader" onclick="tc('c-amount')"><span class="ctype">mandate.payment.amount</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>currency</code></span><span class="fbadge req">REQ</span><span class="fdesc">ISO 4217</span></div>
@@ -561,11 +557,6 @@
         <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout.1" — no ".open". Concrete selections.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_jwt</code></span><span class="fbadge req">REQ</span><span class="fdesc">Merchant-signed cart JWT: items, qty, prices, currency, merchant id.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_hash</code></span><span class="fbadge req">REQ</span><span class="fdesc">= B64U(SHA-256(checkout_jwt)). MUST equal L3a transaction_id.</span></div>
-        <div class="cgroup" id="l3b-lineitems"><div class="cheader" onclick="tc('l3b-lineitems')"><span class="ctype">line_items</span><span class="fbadge opt" style="margin-left:4px">OPT</span><span class="cchev">▶</span></div><div class="cbody">
-          <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">line item identifier</span></div>
-          <div class="field-row sub"><span class="field-name"><code>item.id</code></span><span class="fbadge req">REQ</span><span class="fdesc">product SKU</span></div>
-          <div class="field-row sub"><span class="field-name"><code>item.title</code></span><span class="fbadge req">REQ</span><span class="fdesc">product name</span></div>
-          <div class="field-row sub"><span class="field-name"><code>quantity</code></span><span class="fbadge req">REQ</span><span class="fdesc">integer count</span></div>
         </div></div>
         <div class="field-row"><span class="field-name"><code>prompt_summary</code></span><span class="fbadge opt">OPT</span><span class="fdesc">Human-readable fulfillment summary for audit.</span></div>
         <div class="note" style="margin:6px 8px;">No <code>cnf</code> in payload — terminal. Payment details NOT visible to merchant.</div>
