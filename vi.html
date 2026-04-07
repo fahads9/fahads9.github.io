@@ -594,7 +594,6 @@
     <div class="field-group">
       <div class="group-label av"><div class="vdot"></div>Payload</div>
       <div class="field-row"><span class="field-name"><code>iss</code> = Issuer URI</span><span class="fbadge req">REQ</span><span class="fdesc">Issuer URI.</span></div>
-      <div class="field-row"><span class="field-name"><code>aud</code> = Wallet URI</span><span class="fbadge req">REQ</span><span class="fdesc">Wallet URI.</span></div>
       <div class="field-row"><span class="field-name"><code>sub</code> = user id</span><span class="fbadge req">REQ</span><span class="fdesc">End-user identifier.</span></div>
       <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at timestamp.</span></div>
       <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. ≤ 1 year.</span></div>
@@ -609,6 +608,7 @@
       <div class="field-row"><span class="field-name"><code>pan_last_four</code></span><span class="fbadge req">REQ</span><span class="fdesc">Last 4 PAN digits.</span></div>
       <div class="field-row"><span class="field-name"><code>scheme</code> = "mastercard"</span><span class="fbadge req">REQ</span><span class="fdesc">Payment network.</span></div>
       <div class="field-row"><span class="field-name"><code>card_id</code></span><span class="fbadge opt">OPT</span><span class="fdesc">Multi-card disambiguation.</span></div>
+      <div class="field-row"><span class="field-name"><code>_sd_alg</code> = sha-256</span><span class="fbadge req">REQ</span><span class="fdesc"><code>Hashing Algorithm</code>SHA256 or SHA512</span></div>
     </div>
     <div class="field-group">
       <div class="group-label sd"><div class="vdot"></div>Selectively Disclosable</div>
@@ -651,6 +651,7 @@
       <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at timestamp.</span></div>
       <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. ~15 min (user present).</span></div>
       <div class="field-row"><span class="field-name"><code>sd_hash</code> = hash(L1)</span><span class="fbadge req">REQ</span><span class="fdesc"><code>B64U(SHA-256(ASCII(serialized_L1)))</code>. Binds L2 → entire L1.</span></div>
+      <div class="field-row"><span class="field-name"><code>_sd_alg</code> = sha-256</span><span class="fbadge req">REQ</span><span class="fdesc"><code>Hashing Algorithm</code>SHA256 or SHA512</span></div>
       <div class="field-row"><span class="field-name"><code>delegate_payload</code></span><span class="fbadge req">REQ</span><span class="fdesc">SD-JWT disclosure refs for mandates.</span></div>
     </div>
 
