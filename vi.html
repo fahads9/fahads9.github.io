@@ -602,7 +602,6 @@
     <div class="field-group">
       <div class="group-label av"><div class="vdot"></div>Payload</div>
       <div class="field-row"><span class="field-name"><code>iss</code> = Issuer URI</span><span class="fbadge req">REQ</span><span class="fdesc">Issuer URI.</span></div>
-      <div class="field-row"><span class="field-name"><code>aud</code> = Wallet URI</span><span class="fbadge req">REQ</span><span class="fdesc">Wallet URI.</span></div>
       <div class="field-row"><span class="field-name"><code>sub</code> = user id</span><span class="fbadge req">REQ</span><span class="fdesc">End-user identifier.</span></div>
       <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at timestamp.</span></div>
       <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. ≤ 1 year.</span></div>
@@ -653,8 +652,8 @@
     </div>
     <div class="field-group">
       <div class="group-label av"><div class="vdot"></div>Payload — always visible</div>
-      <div class="field-row"><span class="field-name"><code>iss</code> = wallet URI</span><span class="fbadge req">REQ</span><span class="fdesc">Issuer identifier URI. MUST be a stable, dereferenceable URI.</span></div>
       <div class="field-row"><span class="field-name"><code>nonce</code></span><span class="fbadge req">REQ</span><span class="fdesc">Anti-replay nonce.</span></div>
+      <div class="field-row"><span class="field-name"><code>iss</code> = wallet URI</span><span class="fbadge req">REQ</span><span class="fdesc">Issuer identifier URI. MUST be a stable, dereferenceable URI.</span></div>
       <div class="field-row"><span class="field-name"><code>aud</code> = network URI</span><span class="fbadge req">REQ</span><span class="fdesc">Audience — payment network.</span></div>
       <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at timestamp.</span></div>
       <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. ~15 min (user present).</span></div>
