@@ -497,6 +497,7 @@
         <div class="field-row"><span class="field-name"><code>aud</code> = network URI</span><span class="fbadge req">REQ</span><span class="fdesc">Audience — payment network receiving this.</span></div>
         <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at. When agent created L3a.</span></div>
         <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. RECOMMENDED ~5 min.</span></div>
+        <div class="field-row"><span class="field-name"><code>sd_hash</code></span><span class="fbadge req">REQ</span><span class="fdesc">hash(L2 base JWT + payment discl. + merchant discl.). NOT checkout disclosures.</span></div>
         <div class="cgroup" id="l3a-delegate"><div class="cheader" onclick="tc('l3a-delegate')"><span class="ctype">delegate_payload</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);padding:6px 12px 4px;">SD-JWT disclosure refs for payment mandate fields.</div>
           <pre style="font-family:var(--mono);font-size:10px;color:var(--text);background:var(--bg);margin:0 8px 6px;padding:8px 10px;border-radius:4px;border:1px solid var(--border2);overflow-x:auto;line-height:1.6;">"delegate_payload": [
@@ -518,6 +519,7 @@
         <div class="field-row"><span class="field-name"><code>aud</code> = merchant URI</span><span class="fbadge req">REQ</span><span class="fdesc">Audience — merchant receiving this.</span></div>
         <div class="field-row"><span class="field-name"><code>iat</code></span><span class="fbadge req">REQ</span><span class="fdesc">Issued-at. When agent created L3b.</span></div>
         <div class="field-row"><span class="field-name"><code>exp</code></span><span class="fbadge req">REQ</span><span class="fdesc">Expiration. RECOMMENDED ~5 min.</span></div>
+        <div class="field-row"><span class="field-name"><code>sd_hash</code></span><span class="fbadge req">REQ</span><span class="fdesc">hash(L2 base JWT + checkout discl. + item discl.). NOT payment disclosures.</span></div>
         <div class="cgroup" id="l3b-delegate"><div class="cheader" onclick="tc('l3b-delegate')"><span class="ctype">delegate_payload</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);padding:6px 12px 4px;">SD-JWT disclosure refs for checkout mandate fields.</div>
           <pre style="font-family:var(--mono);font-size:10px;color:var(--text);background:var(--bg);margin:0 8px 6px;padding:8px 10px;border-radius:4px;border:1px solid var(--border2);overflow-x:auto;line-height:1.6;">"delegate_payload": [
