@@ -355,8 +355,8 @@
 
       <!-- Payment Mandate -->
       <div class="mcol">
-        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment.open</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment.open" — constraints for agent to fulfill.</span></div>
+        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment.open.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment.open.1" — constraints for agent to fulfill.</span></div>
         <div class="cgroup" id="l2-pay-cnfjwk"><div class="cheader" onclick="tc('l2-pay-cnfjwk')"><span class="ctype">cnf.jwk</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>kid</code></span><span class="fbadge req">REQ</span><span class="fdesc">Key identifier. MUST match checkout mandate <code>cnf.jwk.kid</code></span></div>
           <div class="field-row sub"><span class="field-name"><code>kty</code></span><span class="fbadge req">REQ</span><span class="fdesc">Key type. Must be "EC"</span></div>
@@ -407,8 +407,8 @@
 
       <!-- Checkout Mandate -->
       <div class="mcol">
-        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout.open</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout.open" — constraints, not final values.</span></div>
+        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout.open.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout.open.1" — constraints, not final values.</span></div>
         <div class="cgroup" id="l2-co-cnfjwk"><div class="cheader" onclick="tc('l2-co-cnfjwk')"><span class="ctype">cnf.jwk</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>kid</code></span><span class="fbadge req">REQ</span><span class="fdesc">Key identifier. MUST match payment mandate <code>cnf.jwk.kid</code></span></div>
           <div class="field-row sub"><span class="field-name"><code>kty</code></span><span class="fbadge req">REQ</span><span class="fdesc">Key type. Must be "EC"</span></div>
@@ -535,8 +535,8 @@
     <div class="mandates-row">
       <!-- L3a Payment Mandate -->
       <div class="mcol">
-        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment" — no ".open". Concrete values.</span></div>
+        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment.1" — no ".open". Concrete values.</span></div>
         <div class="cgroup" id="l3a-instrument"><div class="cheader" onclick="tc('l3a-instrument')"><span class="ctype">payment_instrument</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>type</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument type</span></div>
           <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument identifier</span></div>
@@ -557,8 +557,8 @@
       </div>
       <!-- L3b Checkout Mandate -->
       <div class="mcol">
-        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout" — no ".open". Concrete selections.</span></div>
+        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout.1" — no ".open". Concrete selections.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_jwt</code></span><span class="fbadge req">REQ</span><span class="fdesc">Merchant-signed cart JWT: items, qty, prices, currency, merchant id.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_hash</code></span><span class="fbadge req">REQ</span><span class="fdesc">= B64U(SHA-256(checkout_jwt)). MUST equal L3a transaction_id.</span></div>
         <div class="cgroup" id="l3b-lineitems"><div class="cheader" onclick="tc('l3b-lineitems')"><span class="ctype">line_items</span><span class="fbadge opt" style="margin-left:4px">OPT</span><span class="cchev">▶</span></div><div class="cbody">
@@ -674,8 +674,8 @@
     <!-- SIDE-BY-SIDE IMMEDIATE MANDATES -->
     <div class="mandates-row">
       <div class="mcol">
-        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment" — final, exact values.</span></div>
+        <div class="mcol-header pay">Payment Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → network)</span><span class="mcol-vct">mandate.payment.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.payment.1" — final, exact values.</span></div>
         <div class="cgroup" id="imm-instrument"><div class="cheader" onclick="tc('imm-instrument')"><span class="ctype">payment_instrument</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>type</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument type</span></div>
           <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument identifier</span></div>
@@ -693,8 +693,8 @@
         <div class="field-row"><span class="field-name"><code>transaction_id</code></span><span class="fbadge req">REQ</span><span class="fdesc">= checkout_hash. Cross-binds payment → checkout.</span></div>
       </div>
       <div class="mcol">
-        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout</span></div>
-        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout" — final, completed cart.</span></div>
+        <div class="mcol-header co">Checkout Mandate <span style="font-weight:300;opacity:0.6;text-transform:none;letter-spacing:0">(SD → merchant)</span><span class="mcol-vct">mandate.checkout.1</span></div>
+        <div class="field-row"><span class="field-name"><code>vct</code></span><span class="fbadge req">REQ</span><span class="fdesc">"mandate.checkout.1" — final, completed cart.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_jwt</code></span><span class="fbadge req">REQ</span><span class="fdesc">Cart JWT: items, qty, prices, currency, merchant.</span></div>
         <div class="field-row"><span class="field-name"><code>checkout_hash</code></span><span class="fbadge req">REQ</span><span class="fdesc">= B64U(SHA-256(checkout_jwt)). MUST equal transaction_id.</span></div>
       </div>
