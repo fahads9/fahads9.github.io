@@ -681,8 +681,10 @@
           <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge req">REQ</span><span class="fdesc">instrument identifier</span></div>
           <div class="field-row sub"><span class="field-name"><code>description</code></span><span class="fbadge opt">OPT</span><span class="fdesc">human-readable label</span></div>
         </div></div>
-        <div class="field-row"><span class="field-name"><code>currency</code></span><span class="fbadge req">REQ</span><span class="fdesc">ISO 4217 code (e.g. "USD").</span></div>
-        <div class="field-row"><span class="field-name"><code>amount</code></span><span class="fbadge req">REQ</span><span class="fdesc">Minor units (e.g. 27999 = $279.99).</span></div>
+        <div class="cgroup" id="l3a-amount"><div class="cheader" onclick="tc('l3a-amount')"><span class="ctype">payment_amount</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
+          <div class="field-row sub"><span class="field-name"><code>currency</code></span><span class="fbadge req">REQ</span><span class="fdesc">ISO 4217 (e.g. "USD")</span></div>
+          <div class="field-row sub"><span class="field-name"><code>amount</code></span><span class="fbadge req">REQ</span><span class="fdesc">integer minor units (e.g. 2799 = $27.99)</span></div>
+        </div></div>
         <div class="cgroup" id="imm-payee"><div class="cheader" onclick="tc('imm-payee')"><span class="ctype">payee</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
           <div class="field-row sub"><span class="field-name"><code>id</code></span><span class="fbadge opt">OPT</span><span class="fdesc">unique payee identifier</span></div>
           <div class="field-row sub"><span class="field-name"><code>name</code></span><span class="fbadge req">REQ</span><span class="fdesc">display name</span></div>
