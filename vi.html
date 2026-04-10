@@ -367,13 +367,13 @@
           <div class="field-row sub"><span class="field-name"><code>description</code></span><span class="fbadge opt">OPT</span><span class="fdesc">human-readable label</span></div>
         </div></div>
         <div class="cgroup" id="c-constraints-pay"><div class="cheader" onclick="tc('c-constraints-pay')"><span class="ctype">constraints[]</span><span class="fbadge req" style="margin-left:4px">REQ</span><span class="cchev">▶</span></div><div class="cbody">
-          <div class="cgroup cgroup-nested" id="c-amount"><div class="cheader" onclick="tc('c-amount')"><span class="ctype">mandate.payment.amount</span><span class="cchev">▶</span></div><div class="cbody">
+          <div class="cgroup cgroup-nested" id="c-amount"><div class="cheader" onclick="tc('c-amount')"><span class="ctype">mandate.payment.amount_range</span><span class="cchev">▶</span></div><div class="cbody">
             <div class="field-row sub"><span class="field-name"><code>currency</code></span><span class="fbadge req">REQ</span><span class="fdesc">ISO 4217</span></div>
             <div class="field-row sub"><span class="field-name"><code>min</code></span><span class="fbadge opt">OPT</span><span class="fdesc">lower bound, minor units</span></div>
             <div class="field-row sub"><span class="field-name"><code>max</code></span><span class="fbadge opt">OPT</span><span class="fdesc">upper bound, minor units</span></div>
           </div></div>
-          <div class="cgroup cgroup-nested" id="c-payee"><div class="cheader" onclick="tc('c-payee')"><span class="ctype">mandate.payment.allowed_payee</span><span class="cchev">▶</span></div><div class="cbody">
-            <div class="field-row sub"><span class="field-name"><code>allowed_payees[]</code></span><span class="fbadge req">REQ</span><span class="fdesc">array of payee objects</span></div>
+          <div class="cgroup cgroup-nested" id="c-payee"><div class="cheader" onclick="tc('c-payee')"><span class="ctype">mandate.payment.allowed_payees</span><span class="cchev">▶</span></div><div class="cbody">
+            <div class="field-row sub"><span class="field-name"><code>allowed[]</code></span><span class="fbadge req">REQ</span><span class="fdesc">array of payee objects</span></div>
             <div class="field-row sub2"><span class="field-name"><code>id</code></span><span class="fbadge opt">OPT</span><span class="fdesc">payee identifier</span></div>
             <div class="field-row sub2"><span class="field-name"><code>name</code></span><span class="fbadge req">REQ</span><span class="fdesc">display name</span></div>
             <div class="field-row sub2"><span class="field-name"><code>website</code></span><span class="fbadge req">REQ</span><span class="fdesc">payee URL</span></div>
@@ -381,9 +381,10 @@
           <div class="cgroup cgroup-nested" id="c-ref"><div class="cheader" onclick="tc('c-ref')"><span class="ctype">mandate.payment.reference</span><span class="cchev">▶</span></div><div class="cbody">
             <div class="field-row sub"><span class="field-name"><code>conditional_transaction_id</code></span><span class="fbadge req">REQ</span><span class="fdesc"><code>B64U(SHA-256(checkout mandate disclosure))</code> — pre-commits payment to a specific checkout</span></div>
           </div></div>
-          <div class="cgroup cgroup-nested" id="c-budget"><div class="cheader" onclick="tc('c-budget')"><span class="ctype">mandate.payment.budget</span><span class="cchev">▶</span></div><div class="cbody">
+          <div class="cgroup cgroup-nested" id="c-budget"><div class="cheader" onclick="tc('c-budget')"><span class="ctype">mandate.payment.amount_range</span><span class="cchev">▶</span></div><div class="cbody">
             <div class="field-row sub"><span class="field-name"><code>currency</code></span><span class="fbadge req">REQ</span><span class="fdesc">ISO 4217</span></div>
             <div class="field-row sub"><span class="field-name"><code>max</code></span><span class="fbadge req">REQ</span><span class="fdesc">cumulative spending limit (minor units)</span></div>
+            <div class="field-row sub"><span class="field-name"><code>min</code></span><span class="fbadge req">REQ</span><span class="fdesc">cumulative spending limit (minor units)</span></div>
           </div></div>
           <div class="cgroup cgroup-nested" id="c-recur"><div class="cheader" onclick="tc('c-recur')"><span class="ctype">mandate.payment.recurrence</span><span class="cchev">▶</span></div><div class="cbody">
             <div class="field-row sub"><span class="field-name"><code>frequency</code></span><span class="fbadge req">REQ</span><span class="fdesc">DAILY|WEEKLY|BIWEEKLY|MONTHLY|QUARTERLY|ANNUALLY</span></div>
