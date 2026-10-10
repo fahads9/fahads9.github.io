@@ -1,1 +1,100 @@
-test
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Hosted passkey browser test</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#202126;background:#fff}
+body{max-width:640px;margin:0 auto;padding:24px}
+h1{font-size:26px}p,li{line-height:1.5}
+button{display:block;width:100%;padding:14px;margin:12px 0;font:inherit;border:1px solid #555;border-radius:10px;background:#222;color:#fff;cursor:pointer}
+button:disabled{opacity:.5;cursor:default}
+.notice{padding:14px;background:#fff4d4;border-radius:10px}
+dl{overflow-wrap:anywhere}dt{font-weight:600;margin-top:12px}dd{margin:4px 0}
+#status{min-height:4em;padding:12px;background:#f2f3f5;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>Hosted passkey browser test</h1>
+<p class="notice">Browser test only. No server verifies these responses. This does not authenticate MastercardPayments, authorize Checkout, or make a payment.</p>
+<dl>
+<dt>Page origin</dt><dd id="origin"></dd>
+<dt>Passkey relying-party ID</dt><dd id="rp"></dd>
+<dt>Display mode</dt><dd id="mode"></dd>
+<dt>Secure context</dt><dd id="secure"></dd>
+</dl>
+<button id="register" disabled>Create passkey</button>
+<button id="authenticate" disabled>Authenticate with passkey</button>
+<p id="status" role="status" aria-live="polite">Checking browser support...</p>
+<p>First create a test passkey for this hostname. Then authenticate with that passkey. Localhost and webauthn.io passkeys will not work here.</p>
+<p>Each Create click makes a new test account. Authentication uses a discoverable passkey, so it can work after reloading without cookies or local storage. Private keys stay with your authenticator or passkey provider.</p>
+<p>If this page loads inside a widget but a passkey prompt fails, try opening the same URL directly in your browser. Framing support and embedded passkey support are separate tests.</p>
+<p>This page does not send or display credential responses, save them in browser storage, or contact an application backend.</p>
+<script>
+const status=document.getElementById('status');
+const register=document.getElementById('register');
+const authenticate=document.getElementById('authenticate');
+document.getElementById('origin').textContent=location.origin;
+document.getElementById('rp').textContent=location.hostname;
+document.getElementById('mode').textContent=window.parent===window?'Top-level browser page':'Embedded in a frame';
+document.getElementById('secure').textContent=window.isSecureContext?'Yes':'No';
+const supported=Boolean(window.isSecureContext && window.PublicKeyCredential &&
+  navigator.credentials?.create && navigator.credentials?.get && location.hostname);
+let busy=false;
+const randomBytes=()=>crypto.getRandomValues(new Uint8Array(32));
+function failure(error){
+  switch(error.name){
+    case 'NotAllowedError':return 'The operation was cancelled, timed out, or denied. If embedded, try this URL directly in your browser; host permissions may restrict passkeys.';
+    case 'SecurityError':return 'The browser rejected the origin, relying-party ID, or permissions policy. Try this HTTPS URL directly in your browser.';
+    case 'NotSupportedError':return 'This browser or authenticator does not support the requested passkey operation.';
+    case 'InvalidStateError':return 'A matching credential already exists. Try Authenticate with passkey.';
+    default:return 'The browser could not complete the passkey operation. Try a supported browser or open this page outside the widget.';
+  }
+}
+async function run(kind){
+  if(busy||!supported)return;
+  busy=true;register.disabled=true;authenticate.disabled=true;
+  status.textContent='Follow the passkey prompt in your browser...';
+  try{
+    let credential;
+    if(kind==='register'){
+      const userID=randomBytes();
+      const account='browser-test-'+Array.from(userID.slice(0,6),byte=>byte.toString(16).padStart(2,'0')).join('');
+      credential=await navigator.credentials.create({publicKey:{
+        challenge:randomBytes(),
+        rp:{id:location.hostname,name:'Hosted passkey browser test'},
+        user:{id:userID,name:account,displayName:account},
+        pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],
+        authenticatorSelection:{residentKey:'required',userVerification:'required'},
+        attestation:'none',timeout:60000
+      }});
+    }else{
+      credential=await navigator.credentials.get({publicKey:{
+        challenge:randomBytes(),rpId:location.hostname,
+        userVerification:'required',timeout:60000
+      }});
+    }
+    if(!credential||credential.type!=='public-key')throw Error('No public-key credential returned');
+    status.textContent=kind==='register'
+      ?'Browser passkey creation completed. Now select Authenticate with passkey. No server verification was performed.'
+      :'Browser passkey authentication ceremony completed. The response was not verified by a server; no plugin session or payment was authorized.';
+  }catch(error){
+    status.textContent=failure(error);
+  }finally{
+    busy=false;register.disabled=!supported;authenticate.disabled=!supported;
+  }
+}
+register.onclick=()=>run('register');
+authenticate.onclick=()=>run('authenticate');
+if(supported){
+  register.disabled=false;authenticate.disabled=false;
+  status.textContent='Ready. Create a passkey for this hostname, then authenticate with it.';
+}else{
+  status.textContent='WebAuthn is unavailable in this context. Open this page over HTTPS in a supported browser, not as a local file.';
+}
+</script>
+</body>
+</html>
